@@ -1,6 +1,6 @@
 FROM docker:git
 
-RUN apk --update add curl make py-pip \
+RUN apk --update add curl make py-pip unzip \
     && pip install docker-compose \
     && mkdir -p /root/.composer/cache \
     && mkdir -p /root/.ssh \

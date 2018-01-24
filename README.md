@@ -9,3 +9,4 @@ This is an alpine image, designed as lightweight as possible (to be used in gitl
 - docker-compose
 - py-pip
 - curl
+- unzip
