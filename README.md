@@ -1,12 +1,7 @@
 # Descriptions
 
-This repository describe a simple image from [docker:git](https://hub.docker.com/_/docker/) with added tools.
+This repository describe a simple image from [gitlab/dind](https://hub.docker.com/r/gitlab/dind/) with added tools.
 
-This is an alpine image, designed as lightweight as possible (to be used in gitlab ci runner for example)
+The purpose is to update a little bit the gitlab/dind image to add some tools (make, curl) and update docker-compose binary
 
-# Tools
-- make
-- docker-compose
-- py-pip
-- curl
-- unzip
+Make sure you use the option `--docker-privileged` when registering your runner (or specifying in runner configuration in `/etc/gitlab-runner/config.toml`) to make this image able to run docker containers
