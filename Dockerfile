@@ -13,6 +13,8 @@ RUN apt-get clean && apt-get update -qq && apt-get install -qqy --no-install-rec
         curl \
         gnupg2 \
         software-properties-common \
+        sudo \
+        openssl \
     && mkdir -p /root/.composer/cache \
     && mkdir -p /root/.ssh \
     && bash -c '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config' \
