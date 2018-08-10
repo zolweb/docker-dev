@@ -10,13 +10,13 @@ RUN apt-get clean && apt-get update -qq && apt-get install -qqy --no-install-rec
         git \
         apt-transport-https \
         ca-certificates \
-        curl \
         gnupg2 \
         software-properties-common \
         sudo \
         openssl \
         nano \
         openssh-server \
+	netcat \
     && echo "alias ll='ls -la --color=auto'" >> /root/.bashrc \
     && mkdir -p /root/.composer/cache \
     && mkdir -p /root/.ssh \
