@@ -20,6 +20,7 @@ RUN apt-get clean && apt-get update -qq && apt-get install -qqy --no-install-rec
         netcat \
         jq \
         lsb-release \
+        zip \
     && echo "alias ll='ls -la --color=auto'" >> /root/.bashrc \
     && mkdir -p /root/.composer/cache \
     && mkdir -p /root/.ssh \
