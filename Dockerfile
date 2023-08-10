@@ -2,7 +2,7 @@ FROM docker:24.0.5-dind
 
 ENV PROJECT_ENV=dev SYMFONY_ENV=dev GID=0 UID=0
 
-RUN apk update && apk add \
+RUN apk update && apk add --update --no-cache \
         curl \
         make \
         git \
