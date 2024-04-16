@@ -1,6 +1,6 @@
 # Description
 
-This repository describes a simple image from [debian:11.3](https://hub.docker.com/_/debian/) with added tools.
+This repository describes a simple image from [debian:12.5](https://hub.docker.com/_/debian/) with added tools.
 
 The purpose is to have a base image with docker, docker-compose and some tools (make, curl)
 

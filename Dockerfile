@@ -1,4 +1,4 @@
-FROM debian:11.3
+FROM debian:12.5
 
 ENV PROJECT_ENV=dev SYMFONY_ENV=dev GID=0 UID=0
 
@@ -17,7 +17,7 @@ RUN apt-get clean && apt-get update -qq && apt-get install -qqy --no-install-rec
         openssl \
         nano \
         openssh-server \
-        netcat \
+        netcat-traditional \
         jq \
         lsb-release \
         zip \
@@ -28,11 +28,11 @@ RUN apt-get clean && apt-get update -qq && apt-get install -qqy --no-install-rec
     && mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
-    && apt-get clean && apt-get update -qq && apt-get install -qqy  --no-install-recommends docker-ce \
-    && curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
-    && chmod +x /usr/local/bin/docker-compose \
-    && /usr/local/bin/docker-compose --version \
+    && apt-get clean && apt-get update -qq && apt-get install -qqy --no-install-recommends docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
     && chmod +x /root/entrypoint.sh \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/cache/apt \
+    && sed -i 's/ulimit -Hn/# ulimit -Hn/g' /etc/init.d/docker;
+    # See https://github.com/docker/cli/issues/4807 for the ulimit fix
 
 ENTRYPOINT ["/root/entrypoint.sh"]
